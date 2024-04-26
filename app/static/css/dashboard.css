@@ -1,0 +1,103 @@
+
+.message-taps:hover{
+    background-color: #EDEDED;
+}
+
+
+/* Taps ============================== cutom accordions */
+/*
+.my_accordion{
+    margin: 60px auto;
+    width: 600px;
+}
+
+.my_accordion li{
+    list-style: none;
+    width: 100%;
+    margin: 20px;
+    padding: 10px;
+    border: 8px;
+    background-color: #F5F5F5;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, .15),
+                -6px -6px 10px -1px rgba(255, 255, 255, .7);
+    ;
+
+}
+.my_accordion li label{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+}  
+*/
+
+.btn-container {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .btn-container .material-symbols-outlined {
+    vertical-align: middle;
+  }
+
+.container.my_accordion {
+    max-height: 69vh; /* Adjust this value based on your needs */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding-right: 15px; /* Optional: Adjusts padding to avoid scrollbar overlap */
+}
+
+.message-num-text{
+    font-size: 12px;
+
+}
+.accordion-card-innder-container-bg{
+    background-color: #1D64D4;
+    color: #fff;
+}
+.my_accordion li label{
+    cursor: pointer;
+}  
+.my_accordion li{
+    list-style: none;
+}
+.accordion_card_bg{
+    /* background-color: #F5F5F5; */
+    background-color: #F7F9FC;
+}
+.accordion_card_bg:hover{
+    /* background-color: #F5F5F5; */
+    background-color: #EDEFF2;
+}
+.my_accordion li label::before{
+    content: "+";
+    font-size: 24px;
+    color: #1D64D4;
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.my_accordion input[type="radio"]{
+    display: none;
+}
+
+.my_accordion .content{
+    color: #555;
+    padding: 0 10px;
+    line-height: 26px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s, padding 0.5s ;
+}
+
+.my_accordion input[type="radio"]:checked + label + .content{
+    max-height: 400px;
+    padding: 10px 10px 20px;
+}
+
+.my_accordion input[type="radio"]:checked + label::before{
+    content: "-";
+}
+
+/* Taps ============================== cutom accordions end */

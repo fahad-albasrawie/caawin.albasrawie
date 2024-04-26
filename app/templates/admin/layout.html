@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <link href="{{url_for('static', filename='/img/symbolsvg.svg')}}" rel="icon" />
+    <link href="{{url_for('static', filename='/img/symbolsvg.svg')}}" rel="apple-touch-icon" />
+
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css" rel="stylesheet" />
+
+
+    <!-- Google fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+    <link href="{{url_for('static', filename='css/admin_layout.css')}}" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    {% block custom_css %}
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+
+    <!-- Headers start -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md shadow-0 mt-1">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+
+
+            <!-- md menu btn -->
+            <div class="me-2  p-2 menu-btn-hover self-alignemt-center d-block d-md-none" type="button"
+                data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+            </div>
+
+            <div class="show_or_hide_btns d-none d-sm-none d-md-block d-lg-block ">
+                <!-- hide sidebar -->
+                <div class="me-2  p-2 menu-btn-hover self-alignemt-center hide-sidebar-btn" type="button"
+                    onclick="hide_sidebar('hide-sidebar', 'hide-sidebar-btn', 'show-sidebar-btn')">
+                    <span class="material-symbols-outlined">
+                        menu_open
+                    </span>
+
+
+                </div>
+
+                <!-- show sidebar -->
+
+                <div class="me-2  p-2 menu-btn-hover self-alignemt-center show-sidebar-btn d-none" type="button"
+                    onclick="show_sidebar('hide-sidebar', 'hide-sidebar-btn', 'show-sidebar-btn')">
+                    <span class="material-symbols-outlined">
+                        menu
+                    </span>
+                </div>
+            </div>
+
+
+
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar brand -->
+                <a class="navbar-brand me-0" href="#">
+                    <img src="{{url_for('static', filename='/img/AlbasrawieOfficial Logo_with_text.png')}}" height="40"
+                        alt="MDB Logo" loading="lazy" class="" />
+                </a>
+                <!-- Left links -->
+                <!-- <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark md-font-size" href="#">Bulsho la-joog</a>
+                    </li>
+                </ul> -->
+                <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <!-- Avatars start -->
+            <div class="d-flex align-items-center">
+
+                <!-- Notifications -->
+                <div class="dropdown me-2">
+                    <a data-mdb-dropdown-init class="text-reset me-3 dropdown-toggle hidden-arrow" href="#"
+                        id="navbarDropdownMenuLink" role="button" aria-expanded="false">
+                        <i class="fas fa-bell " id="bell_icon"></i>
+                        <span class="badge rounded-pill badge-notification bg-success">1</span>
+                    </a>
+                </div>
+
+                <!-- Avatar -->
+                <div class="dropdown">
+                    <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
+                        <img src="https://lh3.googleusercontent.com/ogw/AF2bZygTWWh99jP3NyrDCrWkWUZm4xl7vOMod4PDHj2VoGS2fEQ=s32-c-mo"
+                            class="rounded-circle" height="35" alt="The avater image" loading="lazy" />
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end admin-avetar admin_avater"
+                        aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item admin_avater avatar_items" href="#" onclick="clickMe()">My
+                                profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item admin_avater avatar_items" href="#">Settings</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item admin_avater avatar_items" href="#">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right elements -->
+            <!-- Avatars end -->
+        </div>
+        <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+    <!-- Headers end -->
+
+
+
+    <!-- Sidebar start -->
+
+    <div class="offcanvas offcanvas-start rounded-8 border-0 side-bar-bg-color" data-bs-scroll="false"
+        data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasScrollingLabel">
+
+                <!-- Navbar brand -->
+                <a class="navbar-brand me-0" href="#">
+                    <img src="https://yt3.ggpht.com/yti/AGOGRCrvtJiUl-c--ocQQ6mHxCvquIZLpYVvW96_hljjNQ=s88-c-k-c0x00ffffff-no-rj"
+                        height="15" alt="MDB Logo" loading="lazy" />
+                    <span class="ms-2 text-dark md-font-size">Bulsho la-joog</span>
+                </a>
+
+
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Try scrolling the rest of the page to see this option in action.</p>
+        </div>
+    </div>
+    <!-- Sidebar end -->
+
+
+    <!-- Main content start -->
+    <div class="container-fluid my-main-container">
+
+        <div class="row m-1 me-1">
+
+            <!-- left side bar start -->
+            <!-- border border-dark -->
+            <div style="width: 290px;" class="col-2  hide-sidebar my-sidebar side-bar-bg-color" id="admin-sidebar">
+
+                <!-- add new article btn  start -->
+
+                <div class="mt-3 mb-2">
+                    <button type="button"
+                        class="btn btn-white shadow-3-strong btn-lg self-alignemt-center rounded-6 text-black"
+                        data-mdb-collapse-init data-mdb-target="#collapseOneY" aria-expanded="true"
+                        aria-controls="collapseOneY" id="add-new-article-btn">
+                        <span class="material-symbols-outlined" style="font-size: 35px;">
+                            add
+                        </span>Q<span class="text-lowercase">oraal</span>
+                    </button>
+                </div>
+                <!-- add new article btn end -->
+                <div class="accordion mb-2 " id="accordionExampleY">
+                    <div class="accordion-item border-0 shadow-1">
+                        <h2 class="accordion-header" id="headingOneY">
+                        </h2>
+                        <div id="collapseOneY" class="accordion-collapse collapse" aria-labelledby="headingOneY"
+                            data-mdb-parent="#accordionExampleY">
+                            <div class="accordion-body">
+                                <div>
+
+                                    <!-- Add new topic model trigger start -->
+                                    <button type="button"
+                                        class="btn btn-rounded btn-font-size self-alignemt-center mb-2 shadow-0 not_selected_btn"
+                                        data-mdb-ripple-init data-bs-toggle="modal" data-bs-target="#AddNewTopic">
+                                        <span class="material-symbols-outlined">
+                                            stylus
+                                        </span>
+                                        C<span class="text-lowercase">inwaan cusub</span>
+                                    </button>
+                                    <!-- Add new topic model trigger end -->
+                                    <!-- Add new topic model Modal start-->
+
+                                    <div class="modal fade" id="AddNewTopic" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog  modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cinwaanka
+                                                        qormada cusub</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body container">
+
+                                                    <h6>
+                                                        Waxaad qortaa cinwaanka qormada cusub
+                                                    </h6>
+
+
+                                                    <!-- Topic category input input -->
+
+                                                    <div class="mb-3">
+                                                        <select class="form-select p-3"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Dooro qeyb</option>
+                                                            <option value="1">Diini</option>
+                                                            <option value="2">Sheeko</option>
+                                                            <option value="3">Taariikh</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <!-- Article topic input input -->
+                                                    <div class="mb-3">
+                                                        <input class="form-control form-control-lg p-2" type="text"
+                                                            placeholder="Gali cinwaanka" aria-l
+                                                            abel=".form-control-lg example">
+                                                    </div>
+
+                                                    <!-- Topic Context input input -->
+                                                    <div data-mdb-input-init class="form-outline mb-4">
+                                                        <textarea class="form-control" id="topic-context" rows="4"
+                                                            style="resize: none;"></textarea>
+                                                        <label class="form-label" for="topic-context">Nuxurka
+                                                            cinwaanka</label>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary btn-font-size"
+                                                        data-bs-dismiss="modal">K<span class="text-lower ">a
+                                                            baaqo</span> </button>
+                                                    <button type="button"
+                                                        class="btn btn-primary btn-rounded btn-font-size">K<span
+                                                            class="text-lower ">eydi</span> </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Add new topic model Modal end-->
+
+                                </div>
+                                <div>
+                                    <!-- Add new topic model trigger start -->
+                                    <button type="button"
+                                        class="btn btn-rounded btn-font-size self-alignemt-center shadow-0 not_selected_btn"
+                                        onclick="window.location.href='write_article.html'">
+                                        <span class="material-symbols-outlined me-1">
+                                            contract_edit
+                                        </span>Q<span class="text-lowercase">ormo cusub</span>
+                                    </button>
+
+                                    <!-- Add new topic model trigger end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin settings start -->
+                <div class="accordion accordion-borderless" id="accordionFlushExampleX">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOneX">
+                            <button data-mdb-collapse-init class="accordion-button p-3" type="button"
+                                data-mdb-toggle="collapse" data-mdb-target="#flush-collapseOneX" aria-expanded="true"
+                                aria-controls="flush-collapseOneX">
+                                Maamulka
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOneX" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingOneX" data-mdb-parent="#accordionFlushExampleX">
+                            <div class="accordion-body">
+                                <!-- Add new author btn start -->
+                                <button type="button"
+                                    class="btn btn-rounded btn-font-size self-alignemt-center mb-2 shadow-0 not_selected_btn"
+                                    data-mdb-ripple-init data-bs-toggle="modal" data-bs-target="#AddNewAuthor">
+                                    <span class="material-symbols-outlined">
+                                        add
+                                    </span>
+                                    Q<span class="text-lowercase">oraa</span>
+                                </button>
+                                <!-- Add new author btn end -->
+                                <!-- Add new topic model Modal start-->
+
+                                <div class="modal fade" id="AddNewAuthor" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog  modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header ">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                    Qoraa cusub
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body container">
+
+                                                <h6>
+                                                    Waxaad qortaa warbixinta qoraaga cusub
+                                                </h6>
+                                                <div class="row">
+                                                    <div class="mb-3 col">
+                                                        <input class="form-control form-control-lg p-2" type="text"
+                                                            placeholder="Magaca 1aad" aria-l
+                                                            abel=".form-control-lg example" id="fname">
+                                                    </div>
+                                                    <div class="mb-3 col">
+                                                        <input class="form-control form-control-lg p-2" type="text"
+                                                            placeholder="Magaca 2aad" aria-l
+                                                            abel=".form-control-lg example" id="sname">
+                                                    </div>
+                                                    <div class="mb-3 col-12">
+                                                        <input class="form-control form-control-lg p-2" type="text"
+                                                            placeholder="Magaca 3aad" aria-l
+                                                            abel=".form-control-lg example" id="lname">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="mb-3 col">
+                                                        <input class="form-control form-control-lg p-2" type="text"
+                                                            placeholder="Magaca gelidda" aria-l
+                                                            abel=".form-control-lg example" id="username">
+                                                        <span>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-info-circle-fill text-warning"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                                                            </svg>
+                                                        </span>
+                                                        <span class="text-warning" style="font-size: 12px;">
+                                                            Magaca uu system-ka ku soo galayo.
+                                                        </span>
+                                                    </div>
+                                                    <div class="mb-3 col">
+                                                        <input class="form-control form-control-lg p-2" type="password"
+                                                            placeholder="lambar sir (password)" aria-l
+                                                            abel=".form-control-lg example" id="password">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary btn-font-size"
+                                                    data-bs-dismiss="modal">K<span class="text-lower ">a
+                                                        baaqo</span> </button>
+                                                <button type="button"
+                                                    class="btn btn-primary btn-rounded btn-font-size">K<span
+                                                        class="text-lower ">eydi</span> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Add new topic model Modal end-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item d-none">
+                        <h2 class="accordion-header" id="flush-headingTwoX">
+                            <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                                data-mdb-toggle="collapse" data-mdb-target="#flush-collapseTwoX" aria-expanded="false"
+                                aria-controls="flush-collapseTwoX">
+                                Accordion Item #2
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwoX" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingTwoX" data-mdb-parent="#accordionFlushExampleX">
+                            <div class="accordion-body">
+                                Placeholder content for this accordion, which is intended to demonstrate the
+                                <code>.accordion-flush</code> class. This is the second item's accordion body.
+                                Let's imagine this being filled with some actual content.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item d-none">
+                        <h2 class="accordion-header" id="flush-headingThreeX">
+                            <button data-mdb-collapse-init class="accordion-button collapsed" type="button"
+                                data-mdb-toggle="collapse" data-mdb-target="#flush-collapseThreeX" aria-expanded="false"
+                                aria-controls="flush-collapseThreeX">
+                                Accordion Item #3
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThreeX" class="accordion-collapse collapse"
+                            aria-labelledby="flush-headingThreeX" data-mdb-parent="#accordionFlushExampleX">
+                            <div class="accordion-body">
+                                Placeholder content for this accordion, which is intended to demonstrate the
+                                <code>.accordion-flush</code> class. This is the third item's accordion body.
+                                Nothing more exciting happening here in terms of content, but just filling up
+                                the space to make it look, at least at first glance, a bit more representative
+                                of how this would look in a real-world application.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Admin settings end -->
+
+                <!-- sidebar footer -->
+
+                <footer>
+                    <div class="mt-3 mb-3">
+                        <button type="button" class="btn btn-primary btn-rounded btn-font-size" data-mdb-ripple-init>
+                            K<span class="text-lower">eydi</span>
+                        </button>
+                    </div>
+
+                </footer>
+
+            </div>
+
+
+
+            <!-- left side bar end -->
+            <!-- border border-warning -->
+            <div class="col  p-0 p-sm-2">
+                {% block content %}
+
+
+                {% endblock %}
+            </div>
+        </div>
+
+    </div>
+    <!-- Main content end -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+    <!-- MDB -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.umd.min.js"></script>
+
+    <!-- Custom JS -->
+
+    <script src="{{url_for('static', filename='js/layout.js')}}"></script>
+    {% block custom_js %}
+
+    {% endblock %}
+</body>
+
+</html>

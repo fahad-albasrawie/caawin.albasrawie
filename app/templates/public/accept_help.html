@@ -1,0 +1,511 @@
+{% extends 'public/layout.html' %}
+
+
+
+{% block title %}
+Caawinaad Fidin | Albasrawie
+{% endblock %}
+
+<!-- custom spinner page loader -->
+{% block custom_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='/css/accept_help.css')}}" />
+
+{% endblock %}
+
+{% block content %}
+
+
+
+<!-- border border-info -->
+<section class="container ">
+
+
+
+    <div class="row justify-content-center">
+
+
+
+        <!-- border border-danger -->
+        <div class="col-xl-10">
+
+            <h1 class="display-5 fw-normal">
+                Caawinaad <span class="display-6">fidin</span>
+                <span id="accept_help_icon"
+                    class="material-symbols-outlined text-primary submit_feedback_icon text-success">
+                    accessibility
+                </span>
+            </h1>
+
+            <h3 class="display-5 fs-4 mt-3">
+                Aqoontu waxa ay ku koradhaan bixinta.
+            </h3>
+
+            <h5 class="display-6 fs-6">
+                Jaalle ammintaada qaar ka mid ah walaalkaaga ugu wax tar, waxaanu dhab ahaan dabaqaynaa oraahdaan
+                <strong >"<i>Aqoontu waxa ay dhex taalaa ardayda dhexdood.</i>"</strong >
+                <div class="text-end fw-bold">
+
+                    العلم بين التلاميذ
+                </div>
+                
+            </h5>
+
+
+            <!-- ========================  -->
+            <div class="container">
+                <div class="row border-bottom border-secondary p-1 pb-0 ps-0 " id="pills-tab" role="tablist">
+                    <div class="col  d-grid  border-bottom border-2 border-primary message-taps" role="presentation">
+                        <button type="button" class="btn  btn-sm shadow-0 text-primary pb-0 active" id="pills-home-tab"
+                            onclick="openTab(event, 'Guud')">
+
+                            <h1 class="display-4 fs-5 text-capitalize">
+                                Guud <span class="badge text-bg-secondary rounded p-1 bg-info"> <span
+                                        class="message-num-text fw-lighter">19</span> </span>
+                            </h1>
+
+                        </button>
+
+                    </div>
+                    <div class="col  d-grid   message-taps" role="presentation">
+                        <button type="button" class="btn  btn-sm shadow-0 pb-0 " id="pills-profile-tab"
+                            onclick="openTab(event, 'Cusub')">
+
+                            <h1 class="display-4 fs-5 text-capitalize">
+                                Diman <span class="badge text-bg-secondary rounded p-1 bg-primary"> <span
+                                        class="message-num-text fw-lighter">8</span> </span>
+                            </h1>
+
+                        </button>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- My content start ================= -->
+            <div class="mt-1 rounded">
+                <!-- Content for each tab -->
+                <div id="Guud" class="tab-content" style="display:block;">
+                    <h1 class="display-3 fs-3 mt-3 text-dark fw-normal">Soo dhowoow</h1>
+                    <p>Kuwani waa caawinaadaha guud ee ay soo dirsadeen tababbartayaasha. Waxa aynna isugu jiraan kuwa
+                        cusub, kuwa la caawiyey iyo kuwa haddan la caawinayo.</p>
+
+                    <ul class="container my_accordion">
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="firs" checked>
+                            <label for="firs" class="fs-5 text-dark me-3">Salsabiila Fahad Maxamed
+                                <div class="display-6 fs-6 ps-3 me-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+
+                            </label>
+
+                            <div class="content ps-3">
+                                <hr class="me-3">
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                                <hr class="me-3">
+                                <div class="display-1 fs-6 fw-light btn-container">
+                                    <span class="material-symbols-outlined text-warning">
+                                        pending
+                                    </span> Caawiynaya:
+                                    Cabdimajiid Cabdow Cabdullahi
+
+                                </div>
+
+                            </div>
+
+
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="sec">
+                            <label for="sec" class="fs-5 text-dark me-3">Curubo Fahad Maxamed
+                                <div class="display-6 fs-6 ps-3 me-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                                <hr>
+
+                                <div
+                                    class="mt-3 me-3 pt-3 pb-3 ps-2 pe-2  mt-md-3 me-md-3 pt-md-3 pb-md-3 ps-md-3 pe-md-3 bg-white rounded-5 ">
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control me-3 rounded" placeholder="Gali aqoonsi"
+                                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <button class="btn btn-primary rounded-pill fs-6 shadow-0" type="button"
+                                            id="button-addon2">O<span class="text-lower">ggolow</span> </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="thir" checked>
+                            <label for="thir" class="fs-5 text-dark me-3">Saabiriin Jaamac Xuseen
+                                <div class="display-6 fs-6 ps-3 me-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+
+                            </label>
+
+                            <div class="content ps-3">
+                                <hr class="me-3">
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                                <hr class="me-3">
+
+                                <div class="display-1 fs-6 fw-light btn-container">
+                                    <span class="material-symbols-outlined text-success">
+                                        verified
+                                    </span> Caawiyey:
+                                    Cabdimajiid Cabdow Cabdullahi
+
+                                </div>
+
+                            </div>
+
+
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="four">
+                            <label for="four" class="fs-5 text-dark">Tibiyaan Warsame Ciise
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="five">
+                            <label for="five" class="fs-5 text-dark">Xinfiniin Aw Fiqi
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="six">
+                            <label for="six" class="fs-5 text-dark">Isniino Hilowle Yexye
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="seven">
+                            <label for="seven" class="fs-5 text-dark">Buux Dhamac Geeddi
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="eight">
+                            <label for="eight" class="fs-5 text-dark">Ciise Jaamac Warfaa
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="nine">
+                            <label for="nine" class="fs-5 text-dark">Salma Cusman Cabdi
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="ten">
+                            <label for="ten" class="fs-5 text-dark">Warsame Cali Xaaji
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+
+                <!-- New messages =======================================================-->
+
+                <div id="Cusub" class="tab-content" style="display:none;">
+                    <h1 class="display-3 fs-3 mt-3 text-dark fw-normal">Farriimaha Cusub</h1>
+                    <p>Tababbartayaasha hoose waxaa ay u baahan yihiin in la caawiyo. Caawinaaddooda waxaa ay
+                        kordhinaysaa waxqabadkooda.</p>
+
+                    <ul class="container my_accordion">
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-firs" checked>
+                            <label for="new-firs" class="fs-5 text-dark">Salsabiila Fahad Maxamed
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+
+                            </label>
+
+                            <div class="content ps-3">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-sec">
+                            <label for="new-sec" class="fs-5 text-dark">Curubo Fahad Maxamed
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-thir">
+                            <label for="new-thir" class="fs-5 text-dark">Saabiriin Jaamac Xuseen
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-four">
+                            <label for="new-four" class="fs-5 text-dark">Tibiyaan Warsame Ciise
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-five">
+                            <label for="new-five" class="fs-5 text-dark">Xinfiniin Aw Fiqi
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-six">
+                            <label for="new-six" class="fs-5 text-dark">Isniino Hilowle Yexye
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-seven">
+                            <label for="new-seven" class="fs-5 text-dark">Buux Dhamac Geeddi
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-eight">
+                            <label for="new-eight" class="fs-5 text-dark">Ciise Jaamac Warfaa
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-nine">
+                            <label for="new-nine" class="fs-5 text-dark">Salma Cusman Cabdi
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
+                            <input type="radio" name="accordion" id="new-ten">
+                            <label for="new-ten" class="fs-5 text-dark">Warsame Cali Xaaji
+                                <div class="display-6 fs-6 ps-3">
+                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                </div>
+                            </label>
+                            <div class="content">
+                                <hr>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
+                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
+                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+            <!-- My content end ====================-->
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+{% endblock %}
+
+{% block custom_js %}
+<script src="{{url_for('static', filename='js/accept_help.js')}}"></script>
+{% endblock %}

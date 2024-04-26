@@ -1,0 +1,135 @@
+{% extends 'public/layout.html' %}
+
+
+
+{% block title %}
+Caawinaad Dalbo | Albasrawie
+{% endblock %}
+
+<!-- custom spinner page loader -->
+{% block custom_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='/css/submit_feedback.css')}}" />
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="display-5 fw-normal">
+    Caawinaad <span class="display-6">waan helay</span>
+    <span id="ask_help_icon" class="material-symbols-outlined text-primary submit_feedback_icon text-danger">
+        volunteer_activism
+    </span>
+</h1>
+
+<!-- submition card -->
+
+<div class="border border-info rounded pt-5 pb-5 ps-3 pe-3" id="submit-card">
+    <div class="row ">
+        <div class="col-12 col-sm-6 mb-2">
+            <input class="form-control me-auto pt-2 pb-2 border-0" type="text" placeholder="Gali aqoonsigaaga..."
+                aria-label="Add your item here...">
+        </div>
+        <div class="col-12 col-sm-6 mb-2">
+            <div class="input-group mb-3 input-group-lg">
+                <input type="text" class="form-control me-auto rounded-start-1 rounded-end-0 border-0"
+                    placeholder="Gali aqoonsiga caawiyaha..." aria-label="Recipient's username"
+                    aria-describedby="search-helper-btn">
+                <button class="btn bg-white shadow-0  rounded-end-1 border-start " type="button" id="search-helper-btn">
+                    <span class="material-symbols-outlined">
+                        search_check
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <span class="text-sm">Dooro waxa laguugu caawiyey</span>
+        <div class="dropdown">
+
+            <button class="btn bg-white shadow-0 text-dark dropdown-toggle ps-2 capitalize" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false" id="help-title">
+                Cinwaankan ayaa
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Action')">Action</a></li>
+                <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Another action')">Another action</a>
+                </li>
+                <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Dropdown button')">Dropdown
+                        button</a></li>
+                <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Something else here')">Something else
+                        here</a></li>
+            </ul>
+        </div>
+
+        <div class="mb-3 mt-3">
+            <div class="row">
+                <div class="col">
+                    <label for="exampleFormControlTextarea1" class="form-label mb-0 text-sm">Dooq waaye</label>
+                </div>
+                <div class="col text-end">
+                    <span class="material-symbols-outlined help-icon pointer help-icon" data-bs-toggle="popover"
+                        data-bs-placement="right" data-bs-custom-class="custom-popover"
+                        data-bs-content="Faallo u qor caawiyahaaga, waxaa ay u noqonaysaa dhiiragalin. Talo iyo ra'yina u jeedi si marka xiga uu wax waliba sidii si ka hormarsan kuugu yeelo. Mahadsanid.">
+                        help
+                    </span>
+                </div>
+            </div>
+
+            <textarea class="form-control mt-0 border-0" id="exampleFormControlTextarea1" rows="5" placeholder="Sidee baa laguu caawiyey...?" ></textarea>
+
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col align-self-center">
+                    <div class="center ">
+                        <fieldset class="rating rounded-pill bg-light ps-2 pe-2">
+                            <input type="radio" id="star5" name="rating" value="5" class="start-rating" /><label for="star5" class="full"
+                                title="Awesome" ></label>
+                            <input type="radio" id="star4.5" name="rating" value="4.5" class="start-rating"/><label for="star4.5"
+                                class="half "></label>
+                            <input type="radio" id="star4" name="rating" value="4" class="start-rating"/><label for="star4"
+                                class="full"></label>
+                            <input type="radio" id="star3.5" name="rating" value="3.5" class="start-rating"/><label for="star3.5"
+                                class="half"></label>
+                            <input type="radio" id="star3" name="rating" value="3"class="start-rating" /><label for="star3"
+                                class="full"></label>
+                            <input type="radio" id="star2.5" name="rating" value="2.5" class="start-rating"/><label for="star2.5"
+                                class="half"></label>
+                            <input type="radio" id="star2" name="rating" value="2" class="start-rating"/><label for="star2"
+                                class="full"></label>
+                            <input type="radio" id="star1.5" name="rating" value="1.5" class="start-rating"/><label for="star1.5"
+                                class="half"></label>
+                            <input type="radio" id="star1" name="rating" value="1" class="start-rating"/><label for="star1"
+                                class="full"></label>
+                            <input type="radio" id="star0.5" name="rating" value="0.5" class="start-rating"/><label for="star0.5"
+                                class="half"></label>
+                        </fieldset>
+                    </div>
+                    
+                </div>
+                <div class="col text-end">
+                    <button type="button" class="btn btn-primary btn-sm rounded-pill bg-light shadow-0 text-dark ps-4 pe-3 pt-2 ">
+
+                        <span class="material-symbols-outlined  midle-btn-icons">
+                            send
+                        </span>
+
+                    </button>
+                </div>
+            </div>
+            <h4 class="display-6 fs-6" id="rating-value">0</h4>
+        </div>
+        
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
+
+{% block custom_js %}
+<script src="{{url_for('static', filename='js/submit_feedback.js')}}"></script>
+{% endblock %}

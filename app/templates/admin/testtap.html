@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .tab-button {
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+
+        .tab-button:hover {
+            background-color: #ddd;
+        }
+
+        .tab-button.active {
+            background-color: #ccc;
+        }
+
+        .tab-content {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+    </style>
+
+</head>
+
+
+<body>
+<!-- Container for the tab buttons -->
+<div class="container">
+    <div class="row" id="pills-tab" role="tablist">
+        <!-- Tab buttons -->
+        <button class="col tab-button active" id="pills-home-tab" onclick="openTab(event, 'Guud')">Guud</button>
+        <button class="col tab-button" id="pills-profile-tab" onclick="openTab(event, 'Cusub')">Cusub</button>
+        <button class="col tab-button" id="pills-contact-tab" onclick="openTab(event, 'Caawinaya')">Caawinaya</button>
+        <button class="col tab-button" id="pills-disabled-tab" onclick="openTab(event, 'Caawiyey')">Caawiyey</button>
+    </div>
+</div>
+
+<!-- Content for each tab -->
+<div id="Guud" class="tab-content" style="display:block;">
+    <h1>Welcome</h1>
+    <p>This is the Guud tab. Here, you can find general information and introductions.</p>
+</div>
+<div id="Cusub" class="tab-content" style="display:none;">
+    <h1>New Features</h1>
+    <p>This tab will contain information about new features or services we offer.</p>
+</div>
+<div id="Caawinaya" class="tab-content" style="display:none;">
+    <h1>Help</h1>
+    <p>Need help? This tab provides support and assistance resources.</p>
+</div>
+<div id="Caawiyey" class="tab-content" style="display:none;">
+    <h1>Supported</h1>
+    <p>This tab features stories and testimonials from users we have helped.</p>
+</div>
+
+    <script>
+function openTab(evt, tabName) {
+    // Declare all variables
+    var i, tabcontent, tabbuttons;
+
+    // Get all elements with class="tab-content" and hide them
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tab-button" and remove the class "active"
+    tabbuttons = document.getElementsByClassName("tab-button");
+    for (i = 0; i < tabbuttons.length; i++) {
+        tabbuttons[i].className = tabbuttons[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Initialize the default tab
+document.addEventListener('DOMContentLoaded', function() {
+    openTab(event, 'Guud');
+});
+
+
+    </script>
+
+</body>
+
+</html>

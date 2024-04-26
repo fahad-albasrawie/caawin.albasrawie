@@ -1,0 +1,17 @@
+#ask_help_icon{
+    font-size: 40px;
+}
+
+.help-icon{
+    font-size: 15px;
+    color: #3B71CA;
+}
+.zero-opicity{
+    opacity: 0;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+/* popover custom */

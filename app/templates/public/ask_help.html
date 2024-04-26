@@ -1,0 +1,119 @@
+{% extends 'public/layout.html' %}
+
+
+
+{% block title %}
+Caawinaad Dalbo | Albasrawie
+{% endblock %}
+
+<!-- custom spinner page loader -->
+{% block custom_css %}
+<link rel="stylesheet" href="{{url_for('static', filename='/css/ask_help.css')}}" />
+
+{% endblock %}
+
+{% block content %}
+<h1 class="display-5 fw-normal">
+    Dalbo <span class="display-6">Caawinaad</span>
+    <span id="ask_help_icon" class="material-symbols-outlined text-primary">
+        person_raised_hand
+    </span>
+</h1>
+
+
+<!-- Info gathering -->
+
+<div class="mt-3">
+    <h3 class="display-5 fs-4">
+        Afkaaga ku cad gooso
+    </h3>
+
+    <h5 class="display-6 fs-6">
+        Tababbarte, ujeedada caawinaadaan laguugu fidinayo waa inaadan sina uga harin tababbarka
+        saaxiibadaa
+        kula ayniga ah. Hoose si qumman
+        faahfaahsan oo la fahmi karo ugu qor wixii aad u baahan tahay in laguugu caawiyo (tus:
+        cashar,
+        waxqabad, haddii uu <strong>code</strong> qalad (<span class="text-danger">error</span>) kaaga jiro iyo wixii la
+        maid ah). Waxaa, dhab ahaan, diyaarsan saaxiibo iyo hagayaal gacan kuu fidinayo. Wax kasto soo dalbo <strong>ha
+            waawan
+            tababbarte </strong>.
+    </h5>
+
+    <div class="row mt-4">
+        <div class="col-sm-12 col-md-5 col-lg-4 col-xl-3 mb-3">
+            <div class=" text-end zero-opicity">
+                <span class="material-symbols-outlined help-icon">
+                    help
+                </span>
+            </div>
+            <input class="form-control form-control-lg" type="text" placeholder="Magacaaga saddexan"
+                aria-label=".form-control-lg example">
+        </div>
+        <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-3">
+            <div class=" text-end ">
+                <span class="material-symbols-outlined help-icon pointer" data-bs-toggle="popover"
+                    data-bs-placement="right" data-bs-custom-class="custom-popover"
+                    data-bs-content="Gali lambarkaaga WhatsApp-ka caawiyaha ayaa durba kaagala soo xiriirayo.">
+                    help
+                </span>
+            </div>
+            <input class="form-control form-control-lg" type="text" placeholder="Lambarkaaga"
+                aria-label=".form-control-lg example">
+
+        </div>
+        <!-- data-bs-title="Custom popover" -->
+        <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-2 mb-3">
+            <div class=" text-end">
+                <span class="material-symbols-outlined help-icon pointer" data-bs-toggle="popover"
+                    data-bs-placement="right" data-bs-custom-class="custom-popover1"
+                    data-bs-content="Gali lambarka aqoonsiga ee tababbarka Albasrawie">
+                    help
+                </span>
+            </div>
+            <input class="form-control form-control-lg" type="text" placeholder="Aqoonsi"
+                aria-label=".form-control-lg example">
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<hr>
+
+<!-- Write about what you need section -->
+
+<div class="col-sm-12  col-lg-8 col-xl-6 mb-3">
+    <div class=" text-end">
+        <span class="material-symbols-outlined help-icon pointer" data-bs-toggle="popover" data-bs-placement="right"
+            data-bs-custom-class="custom-popover1"
+            data-bs-content="Waxaad qortaa cinwaan cayiman ama waxqabad oo aad doonaysid in laguugu caawiyo (Tus: For loop ha laygu celiyo ama waxqabad hebel ha laygala shaqeeyo. iwm)">
+            help
+        </span>
+    </div>
+    <input class="form-control form-control-lg" type="text" placeholder="Qor cinwaanka aad rabtid in laguugu caawiyo..."
+        aria-label=".form-control-lg example">
+</div>
+
+<div class="mt-2">
+    <textarea class="form-control" id="article" rows="4" name="article"
+        placeholder="Qor faahfaahinta waxa laguugu caawinayo..." style="resize: none;">
+    </textarea>
+</div>
+
+<div class="mt-3 mb-3 footer text-end">
+    <button type="button" class="btn btn-primary btn-rounded btn-font-size" data-mdb-ripple-init>
+        D<span class="text-lowercase">irso caawinaad</span>
+    </button>
+</div>
+
+{% endblock %}
+
+
+
+
+{% block custom_js %}
+<script src="{{url_for('static', filename='js/ask_help.js')}}"></script>
+{% endblock %}
