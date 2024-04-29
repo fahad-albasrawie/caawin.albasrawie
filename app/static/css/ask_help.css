@@ -14,4 +14,8 @@
     cursor: pointer;
 }
 
+.hide_it{
+    display: none;
+}
+
 /* popover custom */

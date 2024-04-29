@@ -30,6 +30,11 @@
 }  
 */
 
+.fs-sm{
+    font-size: 13px;
+
+}
+
 .btn-container {
     display: inline-block;
     vertical-align: middle;

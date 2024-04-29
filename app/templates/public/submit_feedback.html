@@ -25,45 +25,62 @@ Caawinaad Dalbo | Albasrawie
 
 <div class="border border-info rounded pt-5 pb-5 ps-3 pe-3" id="submit-card">
     <div class="row ">
+        <div class="text-sm">
+            <div class="text-danger" id="submit_feedback_err">
+            </div>
+        </div>
+        <div class="text-sm">
+            <div class="text-success" id="submit_feedback_success">
+            </div>
+        </div>
         <div class="col-12 col-sm-6 mb-2">
-            <input class="form-control me-auto pt-2 pb-2 border-0" type="text" placeholder="Gali aqoonsigaaga..."
-                aria-label="Add your item here...">
+            <input class="form-control me-auto pt-2 pb-2 border-0 " type="text" placeholder="Gali aqoonsigaaga..."
+                aria-label="Add your item here..." id="trainee_id">
         </div>
         <div class="col-12 col-sm-6 mb-2">
             <div class="input-group mb-3 input-group-lg">
                 <input type="text" class="form-control me-auto rounded-start-1 rounded-end-0 border-0"
                     placeholder="Gali aqoonsiga caawiyaha..." aria-label="Recipient's username"
-                    aria-describedby="search-helper-btn">
-                <button class="btn bg-white shadow-0  rounded-end-1 border-start " type="button" id="search-helper-btn">
+                    aria-describedby="search-helper-btn" id="helper_id">
+                <button class="btn bg-white shadow-0  rounded-end-1 border-start " type="button" id="search-helper-btn" onclick="search_helping_topics('search-helper-btn', 'searching-helper-btn')">
                     <span class="material-symbols-outlined">
                         search_check
                     </span>
                 </button>
+                <button class="btn bg-white shadow-0  rounded-end-1 border-start " type="button" disabled id="searching-helper-btn" style="display: none;">
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span class="visually-hidden" role="status">Loading...</span>
+                </button>
             </div>
         </div>
 
+        
+
         <span class="text-sm">Dooro waxa laguugu caawiyey</span>
         <div class="dropdown">
-
+            
+            <input type="text" class="form-control me-auto rounded-start-1 rounded-end-0 border-0 mb-2 d-none"
+                    placeholder="Aqoonsiga codsiga..." aria-label="Recipient's username"
+                    aria-describedby="search-helper-btn" id="request_id">
             <button class="btn bg-white shadow-0 text-dark dropdown-toggle ps-2 capitalize" type="button"
                 data-bs-toggle="dropdown" aria-expanded="false" id="help-title">
                 Cinwaankan ayaa
             </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Action')">Action</a></li>
-                <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Another action')">Another action</a>
+            <ul class="dropdown-menu" id="topic-menu">
+
+                <!-- <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Another action')">Another action</a>
                 </li>
                 <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Dropdown button')">Dropdown
                         button</a></li>
                 <li><a class="dropdown-item" href="#" onclick="selectDropdownItem('Something else here')">Something else
-                        here</a></li>
+                        here</a></li> -->
             </ul>
         </div>
 
-        <div class="mb-3 mt-3">
+        <div class="mt-3">
             <div class="row">
                 <div class="col">
-                    <label for="exampleFormControlTextarea1" class="form-label mb-0 text-sm">Dooq waaye</label>
+                    <label for="help_feedback" class="form-label mb-0 text-sm">Dooq waaye</label>
                 </div>
                 <div class="col text-end">
                     <span class="material-symbols-outlined help-icon pointer help-icon" data-bs-toggle="popover"
@@ -74,11 +91,14 @@ Caawinaad Dalbo | Albasrawie
                 </div>
             </div>
 
-            <textarea class="form-control mt-0 border-0" id="exampleFormControlTextarea1" rows="5" placeholder="Sidee baa laguu caawiyey...?" ></textarea>
+            <textarea class="form-control mt-0 border-0" id="help_feedback" rows="7" placeholder="Sidee baa laguu caawiyey...?" ></textarea>
 
         </div>
-
-        <div class="container">
+        <div class="text-sm">
+            <div class="text-success" id="submit_feedback_success">
+            </div>
+        </div>
+        <div class="container mt-3">
             <div class="row">
                 <div class="col align-self-center">
                     <div class="center ">
@@ -107,14 +127,23 @@ Caawinaad Dalbo | Albasrawie
                     </div>
                     
                 </div>
-                <div class="col text-end">
-                    <button type="button" class="btn btn-primary btn-sm rounded-pill bg-light shadow-0 text-dark ps-4 pe-3 pt-2 ">
+                <div class="col-3 text-end">
+                    <div id="submit_feedback_btn">
+                        <button type="button" class="btn btn-primary btn-sm rounded-pill bg-light shadow-0 text-dark ps-4 pe-3 pt-2 "  onclick="submit_help('submit_feedback_btn', 'submiting_feedback_btn')" >
 
-                        <span class="material-symbols-outlined  midle-btn-icons">
-                            send
-                        </span>
-
-                    </button>
+                            <span class="material-symbols-outlined  midle-btn-icons">
+                                send
+                            </span>
+    
+                        </button>
+                    </div>
+                    <div  id="submiting_feedback_btn" disabled style="display: none;">
+                        <button class="btn btn-primary btn-md rounded-pill bg-light shadow-0 text-dark ps-4 pe-4 pt-2 " type="button" >
+                            <span class="spinner-border spinner-border-sm " aria-hidden="true" ></span>
+                            <span class="visually-hidden" role="status">Loading...</span>
+                        </button>
+                    </div>
+                    
                 </div>
             </div>
             <h4 class="display-6 fs-6" id="rating-value">0</h4>

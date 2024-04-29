@@ -42,17 +42,20 @@ Caawinaad Fidin | Albasrawie
 
             <h5 class="display-6 fs-6">
                 Jaalle ammintaada qaar ka mid ah walaalkaaga ugu wax tar, waxaanu dhab ahaan dabaqaynaa oraahdaan
-                <strong >"<i>Aqoontu waxa ay dhex taalaa ardayda dhexdood.</i>"</strong >
+                <strong>"<i>Aqoontu waxa ay dhex taalaa ardayda dhexdood.</i>"</strong>
                 <div class="text-end fw-bold">
 
                     العلم بين التلاميذ
                 </div>
-                
+
             </h5>
 
 
             <!-- ========================  -->
             <div class="container">
+
+                <!-- {{data.get('pending_and_accepted_requests')[0].keys()}} -->
+
                 <div class="row border-bottom border-secondary p-1 pb-0 ps-0 " id="pills-tab" role="tablist">
                     <div class="col  d-grid  border-bottom border-2 border-primary message-taps" role="presentation">
                         <button type="button" class="btn  btn-sm shadow-0 text-primary pb-0 active" id="pills-home-tab"
@@ -60,7 +63,10 @@ Caawinaad Fidin | Albasrawie
 
                             <h1 class="display-4 fs-5 text-capitalize">
                                 Guud <span class="badge text-bg-secondary rounded p-1 bg-info"> <span
-                                        class="message-num-text fw-lighter">19</span> </span>
+                                        class="message-num-text fw-lighter">
+                                        {{data.get('status_counts').get('pending') +
+                                        data.get('status_counts').get('accepted')}}
+                                    </span> </span>
                             </h1>
 
                         </button>
@@ -72,7 +78,9 @@ Caawinaad Fidin | Albasrawie
 
                             <h1 class="display-4 fs-5 text-capitalize">
                                 Diman <span class="badge text-bg-secondary rounded p-1 bg-primary"> <span
-                                        class="message-num-text fw-lighter">8</span> </span>
+                                        class="message-num-text fw-lighter">
+                                        {{data.get('status_counts').get('pending')}}
+                                    </span> </span>
                             </h1>
 
                         </button>
@@ -90,73 +98,218 @@ Caawinaad Fidin | Albasrawie
                     <p>Kuwani waa caawinaadaha guud ee ay soo dirsadeen tababbartayaasha. Waxa aynna isugu jiraan kuwa
                         cusub, kuwa la caawiyey iyo kuwa haddan la caawinayo.</p>
 
+
+
+                    <!-- new code here ============================================================== start-->
+                    {%if data.get('pending_and_accepted_requests')%}
+
+
                     <ul class="container my_accordion">
+                        {%for request in data.get('pending_and_accepted_requests')%}
+                        <!-- if it is pending -->
 
+                        {%if request.get('helping_status') == 'pending'%}
                         <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="firs" checked>
-                            <label for="firs" class="fs-5 text-dark me-3">Salsabiila Fahad Maxamed
+                            <input type="radio" name="accordion" id="pending{{loop.index}}">
+                            <label for="pending{{loop.index}}" class="fs-5 text-dark me-3">
+                                <span id="pending11{{request.get('trainee_id')}}"
+                                    class="d-none">{{request.get('trainee_id')}}</span>
+
+                                {{request.get('trainee_fullname')}}
                                 <div class="display-6 fs-6 ps-3 me-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
+                                    <span id="pending11{{request.get('id')}}"
+                                        class="d-none">{{request.get('id')}}</span>
 
-                            </label>
-
-                            <div class="content ps-3">
-                                <hr class="me-3">
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                                <hr class="me-3">
-                                <div class="display-1 fs-6 fw-light btn-container">
-                                    <span class="material-symbols-outlined text-warning">
-                                        pending
-                                    </span> Caawiynaya:
-                                    Cabdimajiid Cabdow Cabdullahi
-
-                                </div>
-
-                            </div>
-
-
-                        </li>
-
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="sec">
-                            <label for="sec" class="fs-5 text-dark me-3">Curubo Fahad Maxamed
-                                <div class="display-6 fs-6 ps-3 me-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                    ({{request.get('help_type')}})
+                                    | {{request.get('topic')}}
                                 </div>
                             </label>
                             <div class="content">
                                 <hr>
                                 <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                    {{request.get('help_description')|safe}}
                                 </p>
                                 <hr>
 
                                 <div
                                     class="mt-3 me-3 pt-3 pb-3 ps-2 pe-2  mt-md-3 me-md-3 pt-md-3 pb-md-3 ps-md-3 pe-md-3 bg-white rounded-5 ">
+
                                     <div class="input-group ">
+
                                         <input type="text" class="form-control me-3 rounded" placeholder="Gali aqoonsi"
-                                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            aria-label="Recipient's username" aria-describedby="button-addon2"
+                                            id="pending11{{loop.index}}">
                                         <button class="btn btn-primary rounded-pill fs-6 shadow-0" type="button"
-                                            id="button-addon2">O<span class="text-lower">ggolow</span> </button>
+                                            id="accept_help_btn1{{loop.index}}" onclick="accept_help('accepted_help_btn1{{loop.index}}', 'accepting_help_btn1{{loop.index}}', 'accept_help_btn1{{loop.index}}',
+                                                'pending11{{request.get('trainee_id')}}', 'pending11{{loop.index}}', 'pending11{{request.get('id')}}', 
+                                                'mesaage_card_id_pending1{{loop.index}}',
+                                                'accept_help_error_message_container1{{loop.index}}', 'accept_help_error_message1{{loop.index}}',
+                                                'accept_help_success_message_container1{{loop.index}}', 'accept_help_success_message1{{loop.index}}',
+                                                'helper_placeholder_id_first1{{loop.index}}', 'helper_placeholder_id_first2{{loop.index}}'
+                                            
+                                            )
+                                                ">O<span class="text-lowercase">ggolow</span>
+                                        </button>
+                                        <button class="btn btn-success rounded-pill fs-6 shadow-0" type="button"
+                                            id="accepted_help_btn1{{loop.index}}" style="display: none;">
+
+                                            <span class="material-symbols-outlined">
+                                                how_to_reg
+                                            </span>
+                                        </button>
+
+                                        <button class="btn btn-primary rounded rounded-pill" type="button" disabled
+                                            id="accepting_help_btn1{{loop.index}}" style="display: none;">
+                                            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                            <span class="visually-hidden" role="status">Loading...</span>
+                                        </button>
+
                                     </div>
 
                                 </div>
 
                             </div>
+
+                            <div class="me-3  me-md-3 ps-2 pe-2 pt-md-3 pb-md-3 rounded-5 ">
+
+                                <div class="ms-1 me-2 border badge-danger border-danger ps-2 pe-2 rounded pt-1 pb-1 hide_it"
+                                    id="accept_help_error_message_container1{{loop.index}}" style="display: none;">
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                                        </svg>
+                                    </span>
+                                    <span id="accept_help_error_message1{{loop.index}}" class="ms-1">
+
+                                    </span>
+                                </div>
+                                <div class="ms-1 me-2 border badge-success border-success ps-2 pe-2 rounded pt-1 pb-1 hide_it"
+                                    id="accept_help_success_message_container1{{loop.index}}" style="display: none;">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+                                            <path
+                                                d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0" />
+                                            <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708" />
+                                        </svg>
+                                    </span>
+                                    <span id="accept_help_success_message1{{loop.index}}" class="ms-1">
+
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <!-- Message card Start ============================= -->
+
+                            <div class="mt-3 me-3 pt-3 pb-3 ps-2 pe-2  mt-md-3 me-md-3 pt-md-3 pb-md-3 ps-md-3 pe-md-3 bg-white rounded-5 "
+                                style="display: none;" id="mesaage_card_id_pending1{{loop.index}}">
+                                <div class="" id="helping_message_pending{{loop.index}}">
+                                    <h1 class="display-9 fs-6 text-black fw-normal">Caawinaadda Tababbarka Albasrawie
+                                    </h1>
+                                    <br>
+                                    <div class="fs-sm">
+                                        <span class="text-black">Ka: </span> {{request.get('trainee_fullname')}}
+                                    </div>
+                                    <div class="fs-sm">
+                                        <span class="text-black">Caawiye: </span> <span
+                                            id="helper_placeholder_id_first1{{loop.index}}">...</span>
+                                    </div>
+                                    <div class="fs-sm text-black">
+                                        Jaalle {{request.get('trainee_fullname')}}, aad baanu ugu faraxsannahay inaan
+                                        kugu caawino {% if request.get('help_type') == 'Waxqabad' %}
+                                        Waxqabadka
+                                        {% else %}
+                                        Casharka
+                                        {% endif %} <span
+                                            class="text-bold text-success">"{{request.get('topic')}}"</span>. Ammin
+                                        baanu hagaajisanaynaa dabadeedna waanu is-aqoonweydaarsanaynaa haddii Eebbe
+                                        yiraahdo.
+                                    </div>
+                                    <br>
+                                    <div class="fs-sm">
+                                        <span class="text-black">L. Codsadaha: </span> {{request.get('Phone')}}
+                                    </div>
+                                    <div class="fs-sm">
+                                        <span class="text-black">L. Aqoonsi: </span> {{request.get('trainee_id')}}
+                                    </div>
+                                    <div class="fs-sm">
+                                        Tixgelin, <br>
+                                        <span id="helper_placeholder_id_first2{{loop.index}}">...</span>
+                                    </div>
+                                    <div class="fs-sm">
+                                        Kooxda Albasrawie
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="text-end">
+                                    <button type="button"
+                                        class="btn bg-light rounded-end-5 pt-1 ps-0 pb-0 pe-1 shadow-0"
+                                        data-mdb-ripple-init
+                                        onclick="copyTextToClipboard('helping_message_pending{{loop.index}}', 'tick_icon_pending{{loop.index}}', 'copy_icon_pending{{loop.index}}')">
+                                        <span class="material-symbols-outlined" id="copy_icon_pending{{loop.index}}">
+                                            content_copy
+                                        </span>
+                                        <span class="text-success" id="tick_icon_pending{{loop.index}}"
+                                            style="display: none;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+                                            </svg>
+                                            W<span class="text-lowercase">aa la guuriyey!</span>
+                                        </span>
+                                    </button>
+
+                                    <!-- addtional btn -->
+                                    <div>
+                                        <button type="button"
+                                            class="btn bg-light rounded-end-5 pt-1 ps-0 pb-0 pe-1 shadow-0"
+                                            data-mdb-ripple-init id="hide_eye_icon{{loop.index}}"
+                                            onclick="show_eye_hide_dive('mesaage_card_id_pending1{{loop.index}}', 'show_eye1{{loop.index}}')">
+                                            <span class="material-symbols-outlined"
+                                                id="copy_icon_pending{{loop.index}}">
+                                                visibility_off
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="mt-3 me-3 ps-2 pe-2  mt-md-3 me-md-3 ps-md-3 pe-md-3 rounded-5 text-end">
+                                <button type="button" class="btn rounded-end-5 pt-1 ps-0 pb-0 pe-1 shadow-0"
+                                    data-mdb-ripple-init
+                                    onclick="show_dive_hide_eye('mesaage_card_id_pending1{{loop.index}}', 'show_eye1{{loop.index}}', 'hide_eye_icon{{loop.index}}')"
+                                    style="display: none;" id="show_eye1{{loop.index}}">
+                                    <span class="material-symbols-outlined" id="copy_icon_pending{{loop.index}}">
+                                        visibility
+                                    </span>
+                                </button>
+                            </div>
+
+                            <!-- Message card end ============================= -->
                         </li>
 
+                        <!-- if it is accepted -->
+                        {%elif request.get('helping_status') == 'accepted'%}
                         <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="thir" checked>
-                            <label for="thir" class="fs-5 text-dark me-3">Saabiriin Jaamac Xuseen
+                            <input type="radio" name="accordion" id="accepted{{loop.index}}" checked>
+                            <label for="accepted{{loop.index}}"
+                                class="fs-5 text-dark me-3">{{request.get('trainee_fullname')}}
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                        class="bi bi-check-all text-warning" viewBox="0 0 16 16">
+                                        <path
+                                            d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z" />
+                                    </svg>
+                                </span>
                                 <div class="display-6 fs-6 ps-3 me-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                    <!-- <span class="text-dark fw-bold">
+                                        {{request.get('id')}}.
+                                    </span> -->
+                                    ({{request.get('help_type')}})
+                                    | {{request.get('topic')}}
                                 </div>
 
                             </label>
@@ -164,145 +317,41 @@ Caawinaad Fidin | Albasrawie
                             <div class="content ps-3">
                                 <hr class="me-3">
                                 <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                    {{request.get('help_description')|safe}}
                                 </p>
                                 <hr class="me-3">
-
+                                <!-- #{{request.get('helper_id')}} -->
                                 <div class="display-1 fs-6 fw-light btn-container">
-                                    <span class="material-symbols-outlined text-success">
-                                        verified
-                                    </span> Caawiyey:
-                                    Cabdimajiid Cabdow Cabdullahi
+                                    <span class="material-symbols-outlined text-warning">
+                                        pending
+                                    </span> Caawiynaya: {{request.get('helper_fullname')}}
+                                    <!-- | {{request.get('helped_date') }} -->
 
                                 </div>
 
                             </div>
 
-
                         </li>
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="four">
-                            <label for="four" class="fs-5 text-dark">Tibiyaan Warsame Ciise
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="five">
-                            <label for="five" class="fs-5 text-dark">Xinfiniin Aw Fiqi
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
+                        {%endif%}
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="six">
-                            <label for="six" class="fs-5 text-dark">Isniino Hilowle Yexye
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="seven">
-                            <label for="seven" class="fs-5 text-dark">Buux Dhamac Geeddi
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="eight">
-                            <label for="eight" class="fs-5 text-dark">Ciise Jaamac Warfaa
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="nine">
-                            <label for="nine" class="fs-5 text-dark">Salma Cusman Cabdi
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="ten">
-                            <label for="ten" class="fs-5 text-dark">Warsame Cali Xaaji
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
-
+                        {%endfor%}
                     </ul>
+
+                    {%else%}
+                    <div>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Wax codsi ah ma jiraan wali.</strong> Tababbartayaashu wali wax ma soo
+                            codsan.<button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
+
+                    {%endif%}
+
+                    <!--  =================================hete -->
+
 
 
                 </div>
@@ -314,181 +363,210 @@ Caawinaad Fidin | Albasrawie
                     <p>Tababbartayaasha hoose waxaa ay u baahan yihiin in la caawiyo. Caawinaaddooda waxaa ay
                         kordhinaysaa waxqabadkooda.</p>
 
+                    <!-- new code here ============================================================== start-->
+                    {%if data.get('pending_and_accepted_requests')%}
+
+
                     <ul class="container my_accordion">
+                        {%for request in data.get('pending_and_accepted_requests')%}
+                        <!-- if it is pending -->
 
+                        {%if request.get('helping_status') == 'pending'%}
                         <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-firs" checked>
-                            <label for="new-firs" class="fs-5 text-dark">Salsabiila Fahad Maxamed
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-
-                            </label>
-
-                            <div class="content ps-3">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
-
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-sec">
-                            <label for="new-sec" class="fs-5 text-dark">Curubo Fahad Maxamed
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                            <input type="radio" name="accordion" id="pending2{{loop.index}}">
+                            <label for="pending2{{loop.index}}" class="fs-5 text-dark me-3"><span
+                                    id="pending22{{request.get('trainee_id')}}"
+                                    class="d-none">{{request.get('trainee_id')}}</span>
+                                {{request.get('trainee_fullname')}}
+                                <div class="display-6 fs-6 ps-3 me-3">
+                                    <span class="text-dark fw-bold d-none"
+                                        id="pending22{{request.get('id')}}">{{request.get('id')}}</span>
+                                    ({{request.get('help_type')}})
+                                    | {{request.get('topic')}}
                                 </div>
                             </label>
                             <div class="content">
                                 <hr>
                                 <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
+                                    {{request.get('help_description')|safe}}
                                 </p>
-                            </div>
-                        </li>
-
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-thir">
-                            <label for="new-thir" class="fs-5 text-dark">Saabiriin Jaamac Xuseen
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
                                 <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-four">
-                            <label for="new-four" class="fs-5 text-dark">Tibiyaan Warsame Ciise
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                <div
+                                    class="mt-3 me-3 pt-3 pb-3 ps-2 pe-2  mt-md-3 me-md-3 pt-md-3 pb-md-3 ps-md-3 pe-md-3 bg-white rounded-5 ">
+                                    <div class="input-group ">
+                                        <input type="text" class="form-control me-3 rounded" placeholder="Gali aqoonsi"
+                                            aria-label="Recipient's username" aria-describedby="button-addon2"
+                                            id="pending22{{loop.index}}">
+                                        <button class="btn btn-primary rounded-pill fs-6 shadow-0" type="button"
+                                            id="accept_help_btn2{{loop.index}}" onclick="accept_help('accepted_help_btn2{{loop.index}}', 'accepting_help_btn2{{loop.index}}', 'accept_help_btn2{{loop.index}}',
+                                                'pending11{{request.get('trainee_id')}}', 'pending22{{loop.index}}', 'pending11{{request.get('id')}}', 
+                                                'mesaage_card_id_pending2{{loop.index}}',
+                                                'pending_help_error_message_container1{{loop.index}}', 'pending_help_error_message1{{loop.index}}',
+                                                'pending_help_success_message_container1{{loop.index}}', 'pending_help_success_message1{{loop.index}}',
+                                                'helper_placeholder_id_sec1{{loop.index}}', 'helper_placeholder_id_sec2{{loop.index}}'
+                                            
+                                            )">O<span class="text-lowercase">ggolow</span> </button>
+
+                                        <button class="btn btn-success rounded-pill fs-6 shadow-0" type="button"
+                                            id="accepted_help_btn2{{loop.index}}" style="display: none;">
+
+                                            <span class="material-symbols-outlined">
+                                                how_to_reg
+                                            </span>
+                                        </button>
+
+                                        <button class="btn btn-primary rounded rounded-pill" type="button" disabled
+                                            id="accepting_help_btn2{{loop.index}}" style="display: none;">
+                                            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                            <span class="visually-hidden" role="status">Loading...</span>
+                                        </button>
+                                    </div>
+
                                 </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-five">
-                            <label for="new-five" class="fs-5 text-dark">Xinfiniin Aw Fiqi
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                <div class="me-3  me-md-3 ps-2 pe-2 pt-md-3 pb-md-3 rounded-5 ">
+
+                                    <div class="ms-1 me-2 border badge-danger border-danger ps-2 pe-2 rounded pt-1 pb-1 hide_it"
+                                        id="pending_help_error_message_container1{{loop.index}}" style="display: none;">
+                                        <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2" />
+                                            </svg>
+                                        </span>
+                                        <span id="pending_help_error_message1{{loop.index}}" class="ms-1">
+
+                                        </span>
+                                    </div>
+                                    <div class="ms-1 me-2 border badge-success border-success ps-2 pe-2 rounded pt-1 pb-1 hide_it"
+                                        id="pending_help_success_message_container1{{loop.index}}"
+                                        style="display: none;">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0" />
+                                                <path
+                                                    d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708" />
+                                            </svg>
+                                        </span>
+                                        <span id="pending_help_success_message1{{loop.index}}" class="ms-1">
+
+                                        </span>
+                                    </div>
+
                                 </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-six">
-                            <label for="new-six" class="fs-5 text-dark">Isniino Hilowle Yexye
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                            </div>
+
+                            <!-- Message card Start ============================= -->
+
+                            <div class="mt-3 me-3 pt-3 pb-3 ps-2 pe-2  mt-md-3 me-md-3 pt-md-3 pb-md-3 ps-md-3 pe-md-3 bg-white rounded-5 "
+                                style="display: none;" id="mesaage_card_id_pending2{{loop.index}}">
+                                <div class="" id="helping_message_accepted{{loop.index}}">
+                                    <h1 class="display-9 fs-6 text-black fw-normal">Caawinaadda Tababbarka Albasrawie
+                                    </h1>
+                                    <br>
+                                    <div class="fs-sm">
+                                        <span class="text-black">Ka: </span> {{request.get('trainee_fullname')}}
+                                    </div>
+                                    <div class="fs-sm">
+                                        <span class="text-black">Caawiye: </span> <span
+                                            id="helper_placeholder_id_sec1{{loop.index}}">...</span>
+                                    </div>
+                                    <div class="fs-sm text-black">
+                                        Jaalle {{request.get('trainee_fullname')}}, aad baanu ugu faraxsannahay inaan
+                                        kugu caawino {% if request.get('help_type') == 'Waxqabad' %}
+                                        Waxqabadka
+                                        {% else %}
+                                        Casharka
+                                        {% endif %} <span
+                                            class="text-bold text-success">"{{request.get('topic')}}"</span>. Ammin
+                                        baanu hagaajisanaynaa dabadeedna waanu is-aqoonweydaarsanaynaa haddii Eebbe
+                                        yiraahdo.
+                                    </div>
+                                    <br>
+                                    <div class="fs-sm">
+                                        <span class="text-black">L. Codsadaha: </span> {{request.get('Phone')}}
+                                    </div>
+                                    <div class="fs-sm">
+                                        <span class="text-black">L. Aqoonsi: </span> {{request.get('trainee_id')}}
+                                    </div>
+                                    <div class="fs-sm">
+                                        Tixgelin, <br>
+                                        <span id="helper_placeholder_id_sec2{{loop.index}}">...</span>
+                                    </div>
+                                    <div class="fs-sm">
+                                        Kooxda Albasrawie
+                                    </div>
                                 </div>
-                            </label>
-                            <div class="content">
                                 <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
+                                <div class="text-end">
+                                    <button type="button"
+                                        class="btn bg-light rounded-end-5 pt-1 ps-0 pb-0 pe-1 shadow-0"
+                                        data-mdb-ripple-init
+                                        onclick="copyTextToClipboard('helping_message_accepted{{loop.index}}', 'tick_icon_accepted{{loop.index}}', 'copy_icon_accepted{{loop.index}}')">
+                                        <span class="material-symbols-outlined" id="copy_icon_accepted{{loop.index}}">
+                                            content_copy
+                                        </span>
+                                        <span class="text-success" id="tick_icon_accepted{{loop.index}}"
+                                            style="display: none;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z" />
+                                            </svg>
+                                            W<span class="text-lowercase">aa la guuriyey!</span>
+                                        </span>
+                                    </button>
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-seven">
-                            <label for="new-seven" class="fs-5 text-dark">Buux Dhamac Geeddi
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
+                                    <!-- addtional btn -->
+                                    <div>
+                                        <button type="button"
+                                            class="btn bg-light rounded-end-5 pt-1 ps-0 pb-0 pe-1 shadow-0"
+                                            data-mdb-ripple-init id="hide_eye_icon_accepted{{loop.index}}"
+                                            onclick="show_eye_hide_dive('mesaage_card_id_pending2{{loop.index}}', 'show_eye2{{loop.index}}')">
+                                            <span class="material-symbols-outlined"
+                                                id="copy_icon_accepted{{loop.index}}">
+                                                visibility_off
+                                            </span>
+                                        </button>
+                                    </div>
+
                                 </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
                             </div>
+
+                            <div class="mt-3 me-3 ps-2 pe-2  mt-md-3 me-md-3 ps-md-3 pe-md-3 rounded-5 text-end">
+                                <button type="button" class="btn rounded-end-5 pt-1 ps-0 pb-0 pe-1 shadow-0"
+                                    data-mdb-ripple-init
+                                    onclick="show_dive_hide_eye('mesaage_card_id_pending2{{loop.index}}', 'show_eye2{{loop.index}}', 'hide_eye_icon_accepted{{loop.index}}')"
+                                    style="display: none;" id="show_eye2{{loop.index}}">
+                                    <span class="material-symbols-outlined" id="copy_icon_accepted{{loop.index}}">
+                                        visibility
+                                    </span>
+                                </button>
+                            </div>
+
+                            <!-- Message card end ============================= -->
                         </li>
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-eight">
-                            <label for="new-eight" class="fs-5 text-dark">Ciise Jaamac Warfaa
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-nine">
-                            <label for="new-nine" class="fs-5 text-dark">Salma Cusman Cabdi
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
+                        {%endif%}
 
-                        <li class="accordion_card_bg rounded rounded-3 ps-2 pt-2 pb-3 mb-3">
-                            <input type="radio" name="accordion" id="new-ten">
-                            <label for="new-ten" class="fs-5 text-dark">Warsame Cali Xaaji
-                                <div class="display-6 fs-6 ps-3">
-                                    Waxaan rabaa in laygu celiyo casharka (for loop).
-                                </div>
-                            </label>
-                            <div class="content">
-                                <hr>
-                                <p>
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio temporibus reiciendis
-                                    necessitatibus hic neque ratione sint ad commodi placeat enim illum, numquam,
-                                    laboriosam quas ducimus dolore ut nam vero culpa?
-                                </p>
-                            </div>
-                        </li>
-
+                        {%endfor%}
                     </ul>
+
+                    {%else%}
+                    <div>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <strong>Wax codsi ah ma jiraan wali.</strong> Tababbartayaashu wali wax ma soo
+                            codsan.<button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    </div>
+
+                    {%endif%}
 
                 </div>
 

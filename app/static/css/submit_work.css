@@ -1,0 +1,45 @@
+.submit_feedback_icon {
+    font-size: 40px;
+}
+
+.midle-btn-icons{
+    font-size: 20px;
+
+}
+
+#submit-card {
+
+    background-color: #E9EEF6;
+}
+
+#verical_line_sep {
+    border-left: 2px solid #fff;
+
+}
+
+.text-sm {
+    font-size: 13px;
+}
+
+.help-icon {
+    font-size: 15px;
+    color: #3B71CA;
+    cursor: pointer;
+
+
+}
+
+#help-title {
+    color: #727272 !important;
+    font-size: 13px;
+}
+
+/* Capitalise only the first letter and make the rest of the letters lowercase. */
+.capitalize {
+    text-transform: capitalize;
+}
+
+#search-helper-btn:active{
+    background-color: #d4d4d4 !important;
+
+}

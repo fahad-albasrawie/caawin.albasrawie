@@ -33,6 +33,11 @@
     <!-- Tiney T -->
     <script src="https://cdn.tiny.cloud/1/ci57v5f5dkepj31a4ppjbj1b68jjkda0wnouosvx8frxxpb0/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script>
+    <!-- Tiney T -->
+    <!-- <script src="https://cdn.tiny.cloud/1/njx2vaqpdwndm1gljtno6dottmc63ljr67il8qaajhk0w2dv/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script> -->
+                <!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/njx2vaqpdwndm1gljtno6dottmc63ljr67il8qaajhk0w2dv/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- custom spinner page loader -->
     {% block custom_css %}
@@ -140,28 +145,7 @@
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
     </script>
 
-    <script>
-        tinymce.init({
-            selector: 'textarea#article',
-            spellchecker_dialog: false, // Disable the spellchecker dialog
-            browser_spellcheck: false, // Disable the browser's built-in spellchecker
-            // width : 600,
-            height: 300,
-            plugins: [
-                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
-                'searchreplace', 'wordcount', 'visualblocks', 'visualchars', 'code', 'fullscreen', 'insertdatetime',
-                'media', 'table', 'emoticons', 'template', 'help'
-            ],
-            toolbar: 'undo redo | styles | bold italic | alignleft aligncenter alignright alignjustify | ' +
-                'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
-                'forecolor backcolor emoticons | help',
-            menu: {
-                favs: { title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons' }
-            },
-            menubar: 'favs file edit view insert format tools table help',
-            content_css: 'css/content.css'
-        });
-    </script>
+
 
 {% block custom_js %}
 
