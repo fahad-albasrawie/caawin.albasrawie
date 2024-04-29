@@ -28,17 +28,61 @@ function openGoogleDriveLink() {
     }
 }
 
+
+// window.onload = function() {
+//     // Check if the div was previously displayed
+//     if (localStorage.getItem('checkingLinkVisible') === 'true') {
+//         document.getElementById('checking_link_btn').style.display = 'block';
+//     }
+// };
+
+// function LinkChecked() {
+//     var checking_link_btn = document.getElementById('checking_link_btn');
+//     var link_checked = document.getElementById('link_checked');
+//     var checking_link_input = document.getElementById('checking_link_input');
+//     var work_submitted_err = document.getElementById('submit_feedback_err1')
+
+//     // Hides the button and shows the message
+//     work_submitted_err.innerHTML = ''
+//     checking_link_btn.style.display = 'none';
+//     link_checked.style.display = 'block';
+//     checking_link_input.value = 2;
+
+//     // Save the state to local storage
+//     localStorage.setItem('checkingLinkVisible', 'true');
+// }
+window.onload = function() {
+    var wasVisible = localStorage.getItem('checkingLinkVisible');
+    console.log('Loaded state:', wasVisible);  // Debug: Check the loaded state
+
+    if (wasVisible === 'true') {
+        document.getElementById('checking_link_btn').style.display = 'block';
+    } else {
+        document.getElementById('checking_link_btn').style.display = 'none';
+    }
+};
+
 function LinkChecked() {
     var checking_link_btn = document.getElementById('checking_link_btn');
     var link_checked = document.getElementById('link_checked');
     var checking_link_input = document.getElementById('checking_link_input');
-    var work_submitted_err = document.getElementById('submit_feedback_err1')
+    var work_submitted_err = document.getElementById('submit_feedback_err1');
 
-    // Hides the button and shows the message
-    work_submitted_err.innerHTML = ''
-    checking_link_btn.style.display = 'none';
-    link_checked.style.display = 'block';
-    checking_link_input.value = 2;
+    work_submitted_err.innerHTML = '';  // Clear error message
+
+    if (checking_link_btn.style.display === 'block' || checking_link_btn.style.display === '') {
+        checking_link_btn.style.display = 'none';
+        link_checked.style.display = 'block';
+        checking_link_input.value = 2;
+        localStorage.setItem('checkingLinkVisible', 'false');
+        console.log('Div hidden, state set to false');  // Debug: Log action
+    } else {
+        checking_link_btn.style.display = 'block';
+        link_checked.style.display = 'none';
+        checking_link_input.value = '';  // Reset value as needed
+        localStorage.setItem('checkingLinkVisible', 'true');
+        console.log('Div shown, state set to true');  // Debug: Log action
+    }
 }
 
 // ============================================Gooooooooooooooood Looooooooooooooogic start

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HU | Search Student HEMIS Number</title>
+
+    <link rel="icon" href="static/img/hu_official_logo_without_text-and_bg_png.png" type="image/x-icon">
+
+    <!-- google fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.min.css" rel="stylesheet" />
+
+    <!-- my custom css -->
+    <link href="static/css/style.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <!-- search section -->
+    <section id="search-section" class=" mt-0 mt-sm-5 pt-0 pt-sm-5">
+        <!-- mt-sm-5 -->
+        <div class="container  mt-0  pt-0 pt-sm-3">
+            <!-- mt-sm-5 -->
+            <div class="row mt-0  justify-content-center">
+                <div class="col-sm-9 col-md-7 col-lg-9 mycard-bg rounded-9 mt-0 mt-sm-5 ps-3 ps-sm-5 pe-3 pe-sm-5 pb-5">
+
+                    <!-- Overlay -->
+                    <div id="my-overlay"></div>
+                    <!-- Container for the progress bar at the top of the page -->
+                    <div class="my-progress-container">
+                        <div class="my-progress-bar" id="my-myBar"></div>
+                    </div>
+
+                    <!-- inser image -->
+                    <div class="mt-4 mt-sm-5">
+                        <a href="https://hu.edu.so/">
+                            <img src="static/img/hu_official_logo_without_text-and_bg_png.png" alt="HU Logo"
+                                class="img-fluid" style="width: 50px;">
+                        </a>
+                        <!-- <div style="font-size: 9px;">
+                            Hormuud University
+                        </div> -->
+
+                    </div>
+
+                    <div class="row mt-4 row-cols-1 row-cols-lg-2">
+                        <div class="col  mb-3">
+                            <h3 class="display-9 text-dark">
+                                HEMIS-MoEDCHE
+                            </h3>
+
+                            <p class="text-dark">
+                                Get your HEMIS Identity Number
+                            </p>
+                        </div>
+
+                        <!-- Input field column -->
+                        <div class="col ">
+                            <label class="form-label mb-0 d-block d-sm-none" for="search-field" id="text-field-label">Type your HU
+                                Identity Number
+                            </label>
+                            <div class="border ps-2 pt-2 pb-2 rounded mb-3 mt-0 d-block d-sm-none" id="search-field2">
+                                0000
+                            </div>
+                            <div class="form-outline  d-none d-sm-block d-md-block" data-mdb-input-init>
+                                    <input id="search-field" type="text"
+                                        class="form-control form-control-lg search-field" placeholder="0000" autofocus
+                                        autocomplete="on" />
+                                    <label class="form-label" for="search-field" id="text-field-label">Enter your HU
+                                        Identity Number</label>
+                            </div>
+                            <span id="info-btn">
+                                Having a problem?
+                            </span>
+                            <div class="text-info meduim-font-size">
+                                <span id="info-text">
+                                    <small>
+                                        Dear student, if your having an issue, kindly contact academic office
+                                        +252 613311119. Thank you.
+                                    </small>
+                                </span>
+                            </div>
+
+                            <div class="text-danger meduim-font-size" id="err_message_1" style="display: none;">
+                                <span>
+                                    <small>
+                                        Please provide your HU identity card number!
+                                    </small>
+                                </span>
+                            </div>
+
+                            <div class="text-danger meduim-font-size" id="err_message_2" style="display: none;">
+                                <span>
+                                    <small>
+                                        Your HEMIS number is not found. Please provide you valid HU Identity Card number
+                                        or contact academic office +252616314492. Thank you.
+                                    </small>
+                                </span>
+                            </div>
+
+                            <div class="text-danger meduim-font-size" id="err_message_3" style="display: none;">
+                                <span>
+                                    <small>
+                                        There was an error while getting your HEMIS no. Please try again later!
+                                    </small>
+                                </span>
+                            </div>
+
+
+                            <div class="mt-3 meduim-font-size">
+                                <span class="d-none">
+                                    <small>"Ardayga aanan EMIS lambar lahayn jaamacad ma dhigto."</small>
+                                </span>
+                                <span class="">
+                                    <small>"A student without an EMIS number does not attend university."</small>
+                                </span>
+                                <br>
+                                <span>
+                                    <small>~ MoEDU Farah Sheik Abdulkadir</small>
+
+                                </span>
+
+                            </div>
+
+                            <div class="mt-4 text-end">
+                                <button type="submit" class="btn uni-btn-bg btn-rounded fs-6" data-mdb-ripple-init
+                                    onclick="get_hemis_no()">G<span class="text-lowercase">et my EMIS
+                                        No.</span></button>
+                            </div>
+
+                            <div class="mt-3 text-center d-block d-sm-none">
+                                <div class="btn-group  shadow-0 justify-content-center ps-0 pe-0" role="group"
+                                    aria-label="First group">
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>1</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>2</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>3</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>4</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>5</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>6</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>7</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>8</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 me-2 rounded shadow-0"
+                                        data-mdb-ripple-init>9</button>
+                                    <button type="button"
+                                        class="btn number-btns ps-2 pt-1 pb-1 border pe-2 rounded shadow-0 me-2"
+                                        data-mdb-ripple-init>0</button>
+                                    <button type="button"
+                                        class="btn ps-1 pt-1 pb-0 border pe-1 rounded shadow-0 backspace-btn"
+                                        data-mdb-ripple-init>
+                                        <span class="material-symbols-outlined">
+                                            backspace
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        
+
+
+                    </div>
+                    
+
+                </div>
+                <!-- copyright -->
+                <div class="mt-5 text-center pb-5">
+                    <div class="">
+                        <a href="https://hu.edu.so/">
+                            <img src="static/img/hu_official_logo_without_text-and_bg_png.png" alt="HU Logo"
+                                class="img-fluid" style="width: 20px;">
+                        </a>
+                        <div style="font-size: 9px;">
+                            Hormuud University
+                        </div>
+                        <div style="font-size: 9px;">
+                            Copyright© 2024. Powered by HU IT Team
+                        </div>
+                        <div style="font-size: 9px;">
+                            <a href="http://hu.edu.so/privacy-policy/">Privacy Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- MDB -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.2.0/mdb.umd.min.js"></script>
+
+    <!-- my custom js -->
+    <script src="static/js/script.js"></script>
+</body>
+
+</html>

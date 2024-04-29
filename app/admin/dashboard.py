@@ -24,7 +24,7 @@ def check_admin_connection():
         return False, f'Error: {e}.'
 
 
-@app.route('/maamulka/looxa')
+@app.route('/maamulka/looxa/Assaamarraaii!@12')
 def dashboard():
     # connect to the database
     print('Connecting to the database...')

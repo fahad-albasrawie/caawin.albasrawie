@@ -84,7 +84,7 @@
             <!-- Collapsible wrapper -->
 
             <!-- Right elements -->
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center d-block">
 
                 <!-- Notifications -->
                 <div class="d-block d-sm-none">
@@ -94,9 +94,36 @@
 
                     </a>
                 </div>
+                <!-- <div class="dropdown me-2 ">
+                    <button class="btn btn-secondary dropdown-toggle sign-in-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      H<span class="text-lowercase">awlaha bartaha</span>
+                    </button>
+                    <ul class="dropdown-menu mt-3 top-dropdown-menu">
+                      <li><a class="dropdown-item" href="https://www.albasrawie.com/tababbarte/warbixin">Warbixin</a></li>
+                      <li><a class="dropdown-item" href="#">Dalbo caawinaad</a></li>
+                      <li><a class="dropdown-item" href="#">Gudbi hawlmaalmeed</a></li>
+                      <li><a class="dropdown-item" href="#">Fidi caawinaad</a></li>
+                      <li><a class="dropdown-item" href="#">Halcelinta caawinaadda</a></li>
+                      
+                    </ul>
+                </div> -->
+                
                 <!-- Avatar -->
             </div>
             <!-- Right elements -->
+            <div class="dropdown me-2 ">
+                <button class="btn btn-secondary dropdown-toggle sign-in-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  H<span class="text-lowercase">awlaha bartaha</span>
+                </button>
+                <ul class="dropdown-menu mt-3 top-dropdown-menu">
+                  <li><a class="dropdown-item" href="https://www.albasrawie.com/tababbarte/warbixin">Warbixin</a></li>
+                  <li><a class="dropdown-item" href="{{url_for('index')}}">Dalbo caawinaad</a></li>
+                  <li><a class="dropdown-item" href="{{url_for('open_submit_page')}}">Gudbi hawlmaalmeed</a></li>
+                  <li><a class="dropdown-item" href="{{url_for('open_accept_help_page')}}">Fidi caawinaad</a></li>
+                  <li><a class="dropdown-item" href="{{url_for('open_submit_feedback_page')}}">Halcelinta caawinaadda</a></li>
+                  
+                </ul>
+            </div>
         </div>
         <!-- Container wrapper -->
     </nav>
