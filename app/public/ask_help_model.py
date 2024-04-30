@@ -1,11 +1,7 @@
-from flask_bcrypt import Bcrypt
-from app import app
+
 import mysql.connector
-from app.configuration import MyConfiguration
-from flask_bcrypt import Bcrypt
-import csv
-import datetime
-from mysql.connector import Error
+from app.caawin_albasrawie.app.configuration import MyConfiguration
+
 
 
 class Database:

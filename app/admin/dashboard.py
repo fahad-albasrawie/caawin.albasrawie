@@ -1,8 +1,8 @@
 from flask import render_template, session, redirect, url_for, request, make_response, jsonify
 from app import app
-from app.configuration import MyConfiguration
-from app.admin.dashboard_model import Database, Admin
-
+from app.caawin_albasrawie.app.configuration import MyConfiguration
+from app.caawin_albasrawie.app.admin.dashboard_model import Database, Admin
+from app.caawin_albasrawie.app.admin import dashboard, dashboard_model
 
 my_configuration = MyConfiguration()
 def check_admin_connection():
@@ -24,8 +24,8 @@ def check_admin_connection():
         return False, f'Error: {e}.'
 
 
-@app.route('/maamulka/looxa/Assaamarraaii!@12')
-def dashboard():
+@app.route('/maamulka/looxa/ardayda/Assaamarraaii!@12')
+def students_admin_dashboard():
     # connect to the database
     print('Connecting to the database...')
     connection_status, admin = check_admin_connection()
@@ -41,7 +41,7 @@ def dashboard():
                 data = {
                     'help_requests': []
                 }
-                return render_template('admin/dashboard.html', data=data)
+                return render_template('caawin_templates/admin/dashboard.html', data=data)
 
             # calculate the number of help requests by status
             # Initialize a dictionary to store the count of each status, starting all counts at 0
@@ -59,12 +59,12 @@ def dashboard():
                 'help_requests': help_requests[::-1],
                 'status_counts': status_counts
             }
-            return render_template('admin/dashboard.html', data=data)
+            return render_template('caawin_templates/admin/dashboard.html', data=data)
         else:
             print('Failed to get the help requests!')
             data = {}
-            return render_template('admin/dashboard.html', data=data)
+            return render_template('caawin_templates/admin/dashboard.html', data=data)
 
     else:
         print('Failed to connect to the database!')
-        return render_template('admin/dashboard.html', data=data)
+        return render_template('caawin_templates/admin/dashboard.html', data=data)
