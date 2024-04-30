@@ -3,8 +3,8 @@ from datetime import datetime
 from flask import render_template, session, redirect, url_for, request, make_response, jsonify
 from app import app
 from app.configuration import MyConfiguration
-from app.admin.dashboard_model import Database, Admin
-from app.public.ask_help_model import Database, Public
+from app.caawin_albasrawie.app.admin.dashboard_model import Database, Admin
+from app.caawin_albasrawie.app.public.ask_help_model import Database, Public
 
 
 def format_time_ago(timestamp):
@@ -68,7 +68,7 @@ def check_public_connection():
         print(f'')
         return False, f'Error: {e}.'
 
-@app.route('/oggolow')
+@app.route('/caawinaad/fidin')
 def open_accept_help_page():
     # connect to the database
     print('Connecting to the database...')
@@ -85,7 +85,7 @@ def open_accept_help_page():
                 data = {
                     'help_requests': []
                 }
-                return render_template('admin/dashboard.html', data=data)
+                return render_template('caawin_templates/admin/dashboard.html', data=data)
 
             # calculate the number of help requests by status
             # Initialize a dictionary to store the count of each status, starting all counts at 0
@@ -103,15 +103,15 @@ def open_accept_help_page():
                 'pending_and_accepted_requests': pending_and_accepted_requests[::-1],
                 'status_counts': status_counts
             }
-            return render_template('public/accept_help.html', data=data)
+            return render_template('caawin_templates/public/accept_help.html', data=data)
         else:
             print('Failed to get the help requests!')
             data = {}
-            return render_template('public/accept_help.html', data=data)
+            return render_template('caawin_templates/public/accept_help.html', data=data)
 
     else:
         print('Failed to connect to the database!')
-        return render_template('public/accept_help.html', data=data)
+        return render_template('caawin_templates/public/accept_help.html', data=data)
 
 
 @app.route('/accept_helping', methods=['POST'])
@@ -335,9 +335,9 @@ def submit_help_feedback():
     return "Waanu ka xunnahay, waxaan u malaynaynaa in boggani aanu ahayn kan aad rabtay!"
 
 
-@app.route('/dir_hawl')
+@app.route('/barte/dir_hawl')
 def open_submit_page():
-    return render_template('public/submit_work.html')
+    return render_template('caawin_templates/public/submit_work.html')
 
 
 @app.route('/submit_work', methods=['POST'])

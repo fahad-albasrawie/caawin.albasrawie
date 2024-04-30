@@ -1,7 +1,7 @@
 from flask import render_template, session, redirect, url_for, request, make_response, jsonify
 from app import app
-from app.configuration import MyConfiguration
-from app.public.ask_help_model import Database, Public
+from app.caawin_albasrawie.app.configuration import MyConfiguration
+from app.caawin_albasrawie.app.public.ask_help_model import Database, Public
 
 
 my_configuration = MyConfiguration()
@@ -24,9 +24,9 @@ def check_public_connection():
         return False, f'Error: {e}.'
 
 
-@app.route('/')
-def index():
-    return render_template('public/ask_help.html')
+@app.route('/caawinaad/dalbasho')
+def open_ask_help_page():
+    return render_template('caawin_templates/public/ask_help.html')
 
 
 @app.route('/ask_help', methods=['POST'])
